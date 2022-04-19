@@ -1,0 +1,42 @@
+body {
+    font: 14px sans-serif;
+}
+
+.wrapper {
+    width: 360px; padding: 20px;
+}
+
+.login {
+    width: 400px;
+    margin: 50px auto;
+}
+.subject {
+    width: 400px;
+    margin: 50px auto;
+}
+.color {
+    background-color: #EC7063;
+    color: white;
+}
+.color2:hover {
+    background-color: #575757;
+    color: #EC7063;
+}
+.card-header {
+    background-color: #EC7063;
+}
+.card-title1 {
+    color: white;
+    text-align: center;
+}
+.card-title2 {
+    color: white;
+}
+.doctor {
+    margin-bottom: 50px;
+    height: 350px;
+}
+.dashboard {
+    margin: auto auto 400px auto;
+    width: 600px;
+}
