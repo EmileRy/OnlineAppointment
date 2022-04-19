@@ -25,6 +25,9 @@ body {
 .card-header {
     background-color: #EC7063;
 }
+/*.nav-item a {
+    color: white;
+}*/
 .card-title1 {
     color: white;
     text-align: center;
