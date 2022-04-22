@@ -9,7 +9,7 @@ include("components/navbar/main.php");
         <div class="col-md-10 mx-auto col-lg-5">
             <?php
             if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-                include("components/login/home-login-form.php");
+                include("components/login/main.php");
             } else {
                 include("components/find-doctor-form/main.php");
             }
