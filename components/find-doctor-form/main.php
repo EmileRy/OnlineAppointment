@@ -8,7 +8,7 @@
             <option>Physical therapist</option>
             <option>Psychologist</option>
         </select>
-        <label for="floatingInput">Find an appointment with a</label>
+        <label for="floatingInput">I'm looking for a</label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Search</button>
 </form>
