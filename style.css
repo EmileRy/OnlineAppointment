@@ -1,18 +1,9 @@
+$primary: rebeccapurple;
 body {
     font: 14px sans-serif;
 }
-
 .wrapper {
     width: 360px; padding: 20px;
-}
-
-.login {
-    width: 400px;
-    margin: 50px auto;
-}
-.subject {
-    width: 400px;
-    margin: 50px auto;
 }
 .color {
     background-color: #EC7063;

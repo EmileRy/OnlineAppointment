@@ -1,23 +1,14 @@
-<div class="card subject">
-    <div class="card-header">
-        <h2 class="card-title1">Find an appointment</h2>
+<form class="p-4 p-md-5 border rounded-3 bg-light" action="" method="post">
+    <div class="form-floating mb-3">
+        <select class="form-select" aria-label="Default select example">
+            <option selected>General practitioner</option>
+            <option>Vaccin</option>
+            <option>Dentist</option>
+            <option>Gynecologist</option>
+            <option>Physical therapist</option>
+            <option>Psychologist</option>
+        </select>
+        <label for="floatingInput">Find an appointment with a</label>
     </div>
-    <div class="card-body">
-        <form>
-            <div class="form-group">
-                <label for="subject">Subject</label>
-                <select class="form-control">
-                    <option>General practitioner</option>
-                    <option>Vaccin</option>
-                    <option>Dentist</option>
-                    <option>Gynecologist</option>
-                    <option>Physical therapist</option>
-                    <option>Psychologist</option>
-                </select>
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn color">Search</button>
-            </div>
-        </form>
-    </div>
-</div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Search</button>
+</form>
