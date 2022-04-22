@@ -16,6 +16,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     <small class="text-muted"><a href="../../pages/account/reset-password.php">Reset my password</a></small>
                 </div>
             </div>
+            <div class="d-grid gap-2" style="margin-top: 20px;">
+                <a class="btn btn-outline-primary" type="button" href="../../pages/account/logout.php">Logout</a>
+            </div>
             <?php
             $doctor = Doctor::getByUserId($link, $_SESSION["id"]);
             if($doctor !== null){
