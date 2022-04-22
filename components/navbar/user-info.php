@@ -3,7 +3,13 @@
         <?php echo htmlspecialchars($_SESSION["first_name"] . " " . $_SESSION["name"]); ?>
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="../../pages/account/account.php">Profile</a></li>
+        <li><a class="dropdown-item" href="../../pages/account/account.php">Account</a></li>
+        <?php
+        $doctor = Doctor::getByUserId($link, $_SESSION["id"]);
+        if($doctor !== null){
+            echo("<li><a class='dropdown-item' href='../../pages/account/account.php'>Dashboard</a></li>\n");
+        }
+        ?>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="../../pages/account/logout.php">Logout</a></li>
     </ul>

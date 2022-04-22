@@ -1,22 +1,73 @@
 <?php
 include("../../components/navbar/main.php");
-?>
 
-    <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["first_name"]); ?></b>. Welcome to OnlineAppointment.</h1>
-<?php
-$doctor = Doctor::getByUserId($link, $_SESSION["id"]);
-if($doctor !== null){
-    echo("You're a doctor");
-    $timetables = Timetable::getDoctorTimetables($link, $doctor->id);
-    foreach ($timetables as $t) {
-        echo($t->id);
-    }
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
 }
 ?>
-    <p>
-        <a href="pages/account/reset-password.php" class="btn btn-warning">Reset password</a>
-        <a href="pages/account/logout.php" class="btn btn-danger ml-3">Sign out</a>
-    </p>
+    <div class="row">
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img src="../../assets/images/user.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo htmlspecialchars($_SESSION["first_name"] . " " . $_SESSION["name"]); ?></h5>
+                    <p class="card-text"><?php echo htmlspecialchars($_SESSION["email"]); ?></p>
+                    <small class="text-muted"><a href="../../pages/account/reset-password.php">Reset my password</a></small>
+                </div>
+            </div>
+            <?php
+            $doctor = Doctor::getByUserId($link, $_SESSION["id"]);
+            if($doctor !== null){
+                include ("account/doctor-dashboard-link.php");
+            } else {
+                include ("account/doctor-appliment.php");
+            }
+            ?>
+        </div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="upcomming-tab" data-bs-toggle="pill" data-bs-target="#upcomming" type="button" role="tab" aria-controls="upcomming" aria-selected="true">Upcomming appointments</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="past-tab" data-bs-toggle="pill" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">Past appointments</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="upcomming" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="me-auto">
+                                        <div class="fw-bold">Dr. Juiphe</div>
+                                        General practitioner
+                                    </div>
+                                    <span class="badge bg-primary rounded-pill">April the 7th</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="me-auto">
+                                        <div class="fw-bold">Dr. Juiphe</div>
+                                        General practitioner
+                                    </div>
+                                    <span class="badge bg-primary rounded-pill">April the 14th</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Dr. Juiphe — March the 21th</li>
+                                <li class="list-group-item">Dr. Juiphe — March the 1st</li>
+                                <li class="list-group-item">Dr. Juiphe — January the 15th</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <?php
 include("../../components/footer/main.php");

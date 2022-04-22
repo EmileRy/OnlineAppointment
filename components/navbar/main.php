@@ -22,3 +22,4 @@ require_once (__DIR__ . "/../../config.php");
 </head>
 <body>
 <?php include("navbar.php") ?>
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
