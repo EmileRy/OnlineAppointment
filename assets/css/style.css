@@ -33,3 +33,7 @@ body {
     margin: auto auto 400px auto;
     width: 600px;
 }
+.custom-hiddenlink, .custom-hiddenlink:hover {
+    text-decoration: none;
+    color: black;
+}

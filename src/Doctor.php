@@ -62,6 +62,7 @@ class Doctor
     public static function getAll($link) {
         $result = array();
         $sql = "SELECT id, user_id, type_id, address FROM Doctors ORDER BY id";
+
         if($stmt = mysqli_prepare($link, $sql)){
             if(mysqli_stmt_execute($stmt)){
                 mysqli_stmt_store_result($stmt);

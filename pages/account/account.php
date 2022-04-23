@@ -7,8 +7,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 ?>
     <div class="row">
-        <div class="col-4">
-            <div class="card" style="width: 18rem;">
+        <div class="col-lg-4">
+            <div class="card" style="margin-bottom: 20px;">
                 <img src="../../assets/images/user.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo htmlspecialchars($_SESSION["first_name"] . " " . $_SESSION["name"]); ?></h5>
@@ -16,7 +16,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     <small class="text-muted"><a href="../../pages/account/reset-password.php">Reset my password</a></small>
                 </div>
             </div>
-            <div class="d-grid gap-2" style="margin-top: 20px;">
+            <div class="d-grid gap-2" style="margin-bottom: 20px;">
                 <a class="btn btn-outline-primary" type="button" href="../../pages/account/logout.php">Logout</a>
             </div>
             <?php
@@ -28,7 +28,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             }
             ?>
         </div>
-        <div class="col-8">
+        <div class="col">
             <div class="card">
                 <div class="card-body">
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">

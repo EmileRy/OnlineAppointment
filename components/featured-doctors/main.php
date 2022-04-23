@@ -13,7 +13,10 @@
         echo("<h5 class='card-title'>Dr. " . $doctor_user->name . "</h5>\n");
         echo("<p class='card-text'>" . $doctor_type->name . "</p>\n");
         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-            echo("<a href='#' class='btn btn-primary'>Book appointment</a>\n");
+            echo("<form method='post' action='../../pages/doctor/main.php'>\n");
+            echo("<input type='hidden' name='doctor_id' value='$doctor->id'>\n");
+            echo("<button href='#' class='btn btn-primary' type='submit'>Book appointment</button>\n");
+            echo("</form>\n");
         }
         echo("</div>");
         echo("</div>");
