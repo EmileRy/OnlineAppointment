@@ -41,30 +41,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="upcomming" role="tabpanel" aria-labelledby="pills-home-tab">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="me-auto">
-                                        <div class="fw-bold">Dr. Juiphe</div>
-                                        General practitioner
-                                    </div>
-                                    <span class="badge bg-primary rounded-pill">April the 7th</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="me-auto">
-                                        <div class="fw-bold">Dr. Juiphe</div>
-                                        General practitioner
-                                    </div>
-                                    <span class="badge bg-primary rounded-pill">April the 14th</span>
-                                </li>
-                            </ul>
+                            <?php include("account/appointments-upcomming.php"); ?>
                         </div>
                         <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="pills-profile-tab">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Dr. Juiphe — March the 21th</li>
-                                <li class="list-group-item">Dr. Juiphe — March the 1st</li>
-                                <li class="list-group-item">Dr. Juiphe — January the 15th</li>
-
-                            </ul>
+                            <?php include("account/appointments-past.php"); ?>
                         </div>
                     </div>
                 </div>

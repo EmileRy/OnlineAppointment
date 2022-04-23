@@ -3,6 +3,9 @@ session_start();
 
 require_once (__DIR__ . "/../../src/Doctor.php");
 require_once (__DIR__ . "/../../src/Timetable.php");
+require_once (__DIR__ . "/../../src/Type.php");
+require_once (__DIR__ . "/../../src/Appointment.php");
+require_once (__DIR__ . "/../../src/User.php");
 require_once (__DIR__ . "/../../config.php");
 ?>
 <!DOCTYPE html>

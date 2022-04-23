@@ -1,12 +1,12 @@
 <form class="p-4 p-md-5 border rounded-3 bg-light" action="" method="post">
     <div class="form-floating mb-3">
         <select class="form-select" aria-label="Default select example">
-            <option selected>General practitioner</option>
-            <option>Vaccin</option>
-            <option>Dentist</option>
-            <option>Gynecologist</option>
-            <option>Physical therapist</option>
-            <option>Psychologist</option>
+            <?php
+            $types = Type::getAll($link);
+            foreach($types as $type){
+                echo("<option value='" . $type->id . "'>" . $type->name . "</option>\n");
+            }
+            ?>
         </select>
         <label for="floatingInput">I'm looking for a</label>
     </div>
