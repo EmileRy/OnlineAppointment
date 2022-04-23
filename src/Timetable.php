@@ -37,9 +37,12 @@ class Timetable
         return $result;
     }
 
-    public static function getDoctorTimetables($link, $doctor_id) {
+    public static function getDoctorTimetables($link, $doctor_id, $future_only) {
         $result = array();
         $sql = "SELECT t.id, date, duration, (SELECT Count(*) FROM Appointments WHERE timetable_id = t.id) unavailable FROM Timetables t WHERE doctor_id = ?;";
+        if($future_only){
+            $sql = "SELECT t.id, date, duration, (SELECT Count(*) FROM Appointments WHERE timetable_id = t.id) unavailable FROM Timetables t WHERE doctor_id = ? AND t.date > CURRENT_TIME;";
+        }
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "s", $doctor_id);
             if(mysqli_stmt_execute($stmt)){

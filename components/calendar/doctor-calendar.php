@@ -1,5 +1,5 @@
 <?php
-    $timetables = Timetable::getDoctorTimetables($link, trim($_POST["doctor_id"]))
+    $timetables = Timetable::getDoctorTimetables($link, trim($_POST["doctor_id"]), true)
 ?>
 <script>
     $(document).ready(function () {
