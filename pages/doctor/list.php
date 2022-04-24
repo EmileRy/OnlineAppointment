@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["type_id"])) {
                     <p class="card-text">We found <span class="badge bg-secondary"><?php echo(sizeof($doctors)) ?></span> <?php echo($type == null ? "doctors" : strtolower($type->name) . (sizeof($doctors) > 1 ? "s" : "")) ?></p>
                 </div>
             </div>
-            <div class="list-group">
+            <div class="list-group" style="margin-bottom: 20px;">
                 <form method='post' action='<?php echo(htmlspecialchars($_SERVER["PHP_SELF"])) ?>'>
                     <button type='submit' class='list-group-item list-group-item-action <?php echo($type == null ? " active" : "") ?>'>All</button>
                 </form>
