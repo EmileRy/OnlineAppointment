@@ -59,11 +59,18 @@ class Doctor
         return $result;
     }
 
-    public static function getAll($link) {
+    public static function getAll($link, $type_id = -1) {
         $result = array();
         $sql = "SELECT id, user_id, type_id, address FROM Doctors ORDER BY id";
 
+        if($type_id > 0){
+            $sql = "SELECT id, user_id, type_id, address FROM Doctors WHERE type_id = ? ORDER BY id";
+        }
+
         if($stmt = mysqli_prepare($link, $sql)){
+            if($type_id > 0){
+                mysqli_stmt_bind_param($stmt, "s", $type_id);
+            }
             if(mysqli_stmt_execute($stmt)){
                 mysqli_stmt_store_result($stmt);
                 if(mysqli_stmt_num_rows($stmt) >= 1){

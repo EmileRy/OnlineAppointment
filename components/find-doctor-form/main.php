@@ -1,6 +1,6 @@
-<form class="p-4 p-md-5 border rounded-3 bg-light" action="" method="post">
+<form class="p-4 p-md-5 border rounded-3 bg-light" action="../../pages/doctor/list.php" method="post">
     <div class="form-floating mb-3">
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" name="type_id">
             <?php
             $types = Type::getAll($link);
             foreach($types as $type){
