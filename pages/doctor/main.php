@@ -23,6 +23,16 @@ $doctor_type = $doctor->getType($link);
                     <p class="card-text"><?php echo($doctor->address) ?></p>
                 </div>
             </div>
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="card-body">
+                    <h5 class="card-title">No availabilities?</h5>
+                    <p class="card-text">You can search another <?php echo(strtolower($doctor_type->name)) ?></p>
+                    <form method="post" action="list.php">
+                        <input type="hidden" name="type_id" value="<?php echo($doctor_type->id) ?>">
+                        <button type='submit' class='btn btn-outline-primary'>Find another one</button>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="col">
             <div class="card">
