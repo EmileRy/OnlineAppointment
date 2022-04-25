@@ -41,6 +41,16 @@ class Timetable
 
     }
 
+    public function delete($link){
+        $sql = "DELETE FROM Timetables WHERE id = ?";
+        if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "s", $this->id);
+            mysqli_stmt_execute($stmt);
+            $this->id = -1;
+            mysqli_stmt_close($stmt);
+        }
+    }
+
     public static function getById($link, $id){
         $result = null;
         $sql = "SELECT doctor_id, date, duration, (SELECT Count(*) FROM Appointments WHERE timetable_id = t.id) unavailable FROM Timetables t WHERE id = ?";

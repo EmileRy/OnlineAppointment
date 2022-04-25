@@ -1,4 +1,16 @@
 <?php
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["timetable_id"]) && isset($_POST["timetable_id"])){
+        $clicked_timetable = Timetable::getById($link, $_POST["timetable_id"]);
+        if($clicked_timetable->available){
+            $clicked_timetable->delete($link);
+        } else {
+            $appointment = Appointment::getByTimetableId($link, $clicked_timetable->id);
+            if($appointment != null){
+                $appointment->delete($link);
+            }
+        }
+    }
+
     $timetables = Timetable::getDoctorTimetables($link, $doctor->id, true)
 ?>
 <script>
@@ -98,6 +110,8 @@
                     $doctor_user = $doctor->getUser($link);
                     $classname = 'info';
                     $booker_name = "Available";
+
+                    $appointment = null;
                     if(!$timetable->available){
                         $appointment = Appointment::getByTimetableId($link, $timetable->id);
                         $user = $appointment->getUser($link);
@@ -119,9 +133,50 @@
             ],
         });
     });
+
+    function clicked(timetableSlot){
+        document.querySelector('#modal_timetable_value').value = timetableSlot.id;
+        $('#confirmModal').modal('show');
+    }
+
+    function redirectPost(url, data) {
+        var form = document.createElement('form');
+        document.body.appendChild(form);
+        form.method = 'post';
+        form.action = url;
+        for (var name in data) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = name;
+            input.value = data[name];
+            form.appendChild(input);
+        }
+        form.submit();
+    }
 </script>
 
 <div id='wrap'>
     <div id='calendar'></div>
     <div style='clear:both'></div>
+</div>
+
+<div class="modal fade" id="confirmModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                You are about to cancel/delete this availability, do you want to continue ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+                <form method='post' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>'>
+                    <input type='hidden' name='timetable_id' value='-1' id="modal_timetable_value">
+                    <button class='btn btn-danger' type='submit'>Cancel/Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

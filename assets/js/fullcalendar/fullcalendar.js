@@ -3988,7 +3988,7 @@ function AgendaEventRenderer() {
 				skinCss +
 				"'" +
 			">" + (event.className == 'success' ? "<a class='custom-hiddenlink' href=" + event.id + "'../../../pages/appointment/confirm-booking.php?timetable_id='>" : "") +
-			"<div class='fc-event-inner'>" +
+			"<div class='fc-event-inner' onclick='clicked(this);' id='" + event.id + "'>" +
 			"<div class='fc-event-time'>" +
 			htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
 			"</div>" +
