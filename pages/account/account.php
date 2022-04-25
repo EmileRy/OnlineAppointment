@@ -33,15 +33,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <div class="card-body">
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="upcomming-tab" data-bs-toggle="pill" data-bs-target="#upcomming" type="button" role="tab" aria-controls="upcomming" aria-selected="true">Upcomming appointments</button>
+                            <button class="nav-link active" id="upcoming-tab" data-bs-toggle="pill" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="true">Upcoming appointments</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="past-tab" data-bs-toggle="pill" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">Past appointments</button>
                         </li>
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="upcomming" role="tabpanel" aria-labelledby="pills-home-tab">
-                            <?php include("account/appointments-upcomming.php"); ?>
+                        <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <?php include("account/appointments-upcoming.php"); ?>
                         </div>
                         <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <?php include("account/appointments-past.php"); ?>

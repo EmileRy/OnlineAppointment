@@ -1,6 +1,7 @@
 <ul class="list-group list-group-flush">
     <?php
     $appointments = Appointment::getByUserId($link, $_SESSION["id"]);
+    $count = 0;
     foreach($appointments as $appointment){
         $timetable = $appointment->getTimetable($link);
         $date = new DateTime($timetable->date);
@@ -19,7 +20,12 @@
             echo("<button type='submit' class='btn btn-outline-primary btn-sm'>Cancel</button>\n");
             echo("</form>\n");
             echo("</li>\n");
+
+            $count++;
         }
+    }
+    if($count == 0){
+        echo("<p style='color: gray;'>You don't have any upcoming appointment</p>");
     }
     ?>
 </ul>
