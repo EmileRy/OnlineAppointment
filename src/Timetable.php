@@ -6,7 +6,7 @@ class Timetable
     //Variables of the object Timetable
     public $id, $doctor_id, $date, $duration, $available;
 
-    public function __construct($id, $doctor_id, $date, $duration, $available = true) {
+    public function __construct($doctor_id, $date, $duration, $id = -1, $available = true) {
         $this->id = $id;
         $this->doctor_id = $doctor_id;
         $this->date = $date;
@@ -16,6 +16,29 @@ class Timetable
 
     public function getDoctor($link){
         return Doctor::getById($link, $this->doctor_id);
+    }
+
+    public function save($link){
+        if($this->id == -1) {
+            $this->create($link);
+        } else {
+            $this->update($link);
+        }
+    }
+
+    private function create($link){
+        $sql = "INSERT INTO Timetables(doctor_id, date, duration) VALUES(?,?,?)";
+        if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "sss", $this->doctor_id, $this->date, $this->duration);
+            if(mysqli_stmt_execute($stmt)){
+                $this->id = mysqli_insert_id($link);
+            }
+            mysqli_stmt_close($stmt);
+        }
+    }
+
+    private function update(){
+
     }
 
     public static function getById($link, $id){
@@ -28,7 +51,7 @@ class Timetable
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     mysqli_stmt_bind_result($stmt, $doctor_id, $date, $duration, $unavailable);
                     if(mysqli_stmt_fetch($stmt)){
-                        $result = new Timetable($id, $doctor_id, $date, $duration, !$unavailable);
+                        $result = new Timetable($doctor_id, $date, $duration, $id, !$unavailable);
                     }
                 }
             }
@@ -50,7 +73,7 @@ class Timetable
                 if(mysqli_stmt_num_rows($stmt) > 0){
                     mysqli_stmt_bind_result($stmt, $id, $date, $duration, $unavailable);
                     while(mysqli_stmt_fetch($stmt)){
-                        $result[] = new Timetable($id, $doctor_id, $date, $duration, !$unavailable);
+                        $result[] = new Timetable($doctor_id, $date, $duration, $id, !$unavailable);
                     }
                 }
             }

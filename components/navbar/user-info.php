@@ -7,7 +7,7 @@
         <?php
         $doctor = Doctor::getByUserId($link, $_SESSION["id"]);
         if($doctor !== null){
-            echo("<li><a class='dropdown-item' href='../../pages/account/account.php'>Dashboard</a></li>\n");
+            echo("<li><a class='dropdown-item' href='../../pages/dashboard/main.php'>Dashboard</a></li>\n");
         }
         ?>
         <li><hr class="dropdown-divider"></li>

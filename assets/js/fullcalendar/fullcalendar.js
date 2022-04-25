@@ -3987,7 +3987,7 @@ function AgendaEventRenderer() {
 				"left:" + seg.left + "px;" +
 				skinCss +
 				"'" +
-			">" + (event.className == 'success' ? "<a class='custom-hiddenlink' href='../../pages/appointment/confirm-booking.php?timetable_id=" + event.id + "'>" : "") +
+			">" + (event.className == 'success' ? "<a class='custom-hiddenlink' href=" + event.id + "'../../../pages/appointment/confirm-booking.php?timetable_id='>" : "") +
 			"<div class='fc-event-inner'>" +
 			"<div class='fc-event-time'>" +
 			htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +

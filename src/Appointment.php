@@ -17,6 +17,10 @@ class Appointment
         return Timetable::getById($link, $this->timetable_id);
     }
 
+    public function getUser($link){
+        return User::getById($link, $this->user_id);
+    }
+
     public function save($link){
         if($this->id == -1) {
             $this->create($link);
@@ -95,6 +99,25 @@ class Appointment
                     mysqli_stmt_bind_result($stmt, $id, $timetable_id, $notes);
                     while(mysqli_stmt_fetch($stmt)){
                         $result[] = new Appointment($user_id, $timetable_id, $notes, $id);
+                    }
+                }
+            }
+            mysqli_stmt_close($stmt);
+        }
+        return $result;
+    }
+
+    public static function getByTimetableId($link, $timetable_id){
+        $result = null;
+        $sql = "SELECT id, user_id, notes FROM Appointments WHERE timetable_id = ?";
+        if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "s", $timetable_id);
+            if(mysqli_stmt_execute($stmt)){
+                mysqli_stmt_store_result($stmt);
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    mysqli_stmt_bind_result($stmt, $id, $user_id, $notes);
+                    if(mysqli_stmt_fetch($stmt)){
+                        $result = new Appointment($user_id, $timetable_id, $notes, $id);
                     }
                 }
             }

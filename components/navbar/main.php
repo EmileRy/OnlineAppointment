@@ -24,11 +24,14 @@ require_once (__DIR__ . "/../../config.php");
     <link rel="stylesheet" href="../../assets/css/style.css">
     <script src="../../assets/js/script.js"></script>
 
-    <link href='../../assets/css/fullcalendar.css' rel='stylesheet' />
-    <link href='../../assets/css/fullcalendar.print.css' rel='stylesheet' media='print' />
-    <script src='../../assets/js/jquery-1.10.2.js' type="text/javascript"></script>
-    <script src='../../assets/js/jquery-ui.custom.min.js' type="text/javascript"></script>
-    <script src='../../assets/js/fullcalendar.js' type="text/javascript"></script>
+    <link href='../../assets/css/fullcalendar/fullcalendar.css' rel='stylesheet' />
+    <link href='../../assets/css/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <script src='../../assets/js/fullcalendar/jquery-1.10.2.js' type="text/javascript"></script>
+    <script src='../../assets/js/fullcalendar/jquery-ui.custom.min.js' type="text/javascript"></script>
+    <script src='../../assets/js/fullcalendar/fullcalendar.js' type="text/javascript"></script>
+
+    <link rel="stylesheet" href="../../assets/css/date-picker/simplepicker.css">
+    <script src="../../assets/js/date-picker/simplepicker.js"></script>
 </head>
 <body>
 <?php include("navbar.php") ?>
