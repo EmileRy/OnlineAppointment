@@ -95,27 +95,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
         ?>
         <div class="form-floating mb-3">
-            <input type="text" name="first_name" value="<?php echo $first_name; ?>" class="form-control <?php echo (!empty($first_name_err)) ? 'is-invalid' : ''; ?>" id="floatingInput" placeholder="James">
+            <input type="text" name="first_name" value="<?php echo $first_name; ?>" class="form-control <?php echo (!empty($first_name_err)) ? 'is-invalid' : ''; ?>" id="floatingInput" placeholder="James" required>
             <span class="invalid-feedback"><?php echo $first_name_err; ?></span>
             <label for="floatingInput">First name</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" name="name" value="<?php echo $name; ?>" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" id="floatingInput" placeholder="Dean">
+            <input type="text" name="name" value="<?php echo $name; ?>" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" id="floatingInput" placeholder="Dean" required>
             <span class="invalid-feedback"><?php echo $name_err; ?></span>
             <label for="floatingInput">Name</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" name="email" value="<?php echo $email; ?>" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" id="floatingInput" placeholder="name@example.com">
+            <input type="email" name="email" value="<?php echo $email; ?>" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" id="floatingInput" placeholder="name@example.com" required>
             <span class="invalid-feedback"><?php echo $email_err; ?></span>
             <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password">
+            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password" required>
             <span class="invalid-feedback"><?php echo $password_err; ?></span>
             <label for="floatingPassword">Password</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password">
+            <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password" required>
             <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             <label for="floatingPassword">Confirm password</label>
         </div>

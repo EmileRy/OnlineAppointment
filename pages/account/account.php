@@ -24,7 +24,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             if($doctor !== null){
                 include ("account/doctor-dashboard-link.php");
             } else {
-                include ("account/doctor-appliment.php");
+                include("account/doctor-apply.php");
             }
             ?>
         </div>

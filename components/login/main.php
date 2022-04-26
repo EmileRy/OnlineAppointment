@@ -66,12 +66,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     ?>
     <div class="form-floating mb-3">
-        <input type="email" name="email" value="<?php echo $email; ?>" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" id="floatingInput" placeholder="name@example.com">
+        <input type="email" name="email" value="<?php echo $email; ?>" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" id="floatingInput" placeholder="name@example.com" required>
         <span class="invalid-feedback"><?php echo $email_err; ?></span>
         <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password">
+        <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password" required>
         <span class="invalid-feedback"><?php echo $password_err; ?></span>
         <label for="floatingPassword">Password</label>
     </div>

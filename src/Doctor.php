@@ -6,7 +6,7 @@ class Doctor
     //Variables of the object Doctor
     public $id, $user_id, $type_id, $address;
 
-    public function __construct($id, $user_id, $type_id, $address) {
+    public function __construct($user_id, $type_id, $address, $id = -1) {
         $this->id = $id;
         $this->user_id = $user_id;
         $this->type_id = $type_id;
@@ -21,6 +21,29 @@ class Doctor
         return Type::getById($link, $this->type_id);
     }
 
+    public function save($link){
+        if($this->id == -1) {
+            $this->create($link);
+        } else {
+            $this->update($link);
+        }
+    }
+
+    private function create($link){
+        $sql = "INSERT INTO Doctors(user_id, type_id, address) VALUES(?,?,?)";
+        if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "sss", $this->user_id, $this->type_id, $this->address);
+            if(mysqli_stmt_execute($stmt)){
+                $this->id = mysqli_insert_id($link);
+            }
+            mysqli_stmt_close($stmt);
+        }
+    }
+
+    private function update(){
+
+    }
+
     public static function getById($link, $id) {
         $result = null;
         $sql = "SELECT user_id, type_id, address FROM Doctors WHERE id = ?";
@@ -31,7 +54,7 @@ class Doctor
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     mysqli_stmt_bind_result($stmt, $user_id, $type_id, $address);
                     if(mysqli_stmt_fetch($stmt)){
-                        $result = new Doctor($id, $user_id, $type_id, $address);
+                        $result = new Doctor($user_id, $type_id, $address, $id);
                     }
                 }
             }
@@ -50,7 +73,7 @@ class Doctor
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     mysqli_stmt_bind_result($stmt, $id, $type_id, $address);
                     if(mysqli_stmt_fetch($stmt)){
-                        $result = new Doctor($id, $user_id, $type_id, $address);
+                        $result = new Doctor($user_id, $type_id, $address, $id);
                     }
                 }
             }
@@ -76,7 +99,7 @@ class Doctor
                 if(mysqli_stmt_num_rows($stmt) >= 1){
                     mysqli_stmt_bind_result($stmt, $id, $user_id, $type_id, $address);
                     while(mysqli_stmt_fetch($stmt)){
-                        $result[] = new Doctor($id, $user_id, $type_id, $address);
+                        $result[] = new Doctor($user_id, $type_id, $address, $id);
                     }
                 }
             }

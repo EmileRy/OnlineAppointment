@@ -58,12 +58,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 <form class="p-4 p-md-5 border rounded-3 bg-light" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
     <div class="form-floating mb-3">
-        <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" id="floatingInput" placeholder="Password">
+        <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" id="floatingInput" placeholder="Password" required>
         <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
         <label for="floatingInput">New Password</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password">
+        <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password" required>
         <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
         <label for="floatingPassword">Confirm password</label>
     </div>
