@@ -1,6 +1,11 @@
 <?php
 include("../../components/navbar/main.php");
 
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: ../account/login.php");
+    exit;
+}
+
 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["appointment_id"])){
     $appointment = Appointment::getById($link, $_POST["appointment_id"]);
 } else {

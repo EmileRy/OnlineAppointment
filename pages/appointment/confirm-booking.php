@@ -1,6 +1,11 @@
 <?php
 include("../../components/navbar/main.php");
 
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: ../account/login.php");
+    exit;
+}
+
 if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["timetable_id"])){
     $timetable = Timetable::getById($link, $_GET["timetable_id"]);
 } else {

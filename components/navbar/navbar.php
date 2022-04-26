@@ -10,6 +10,9 @@
                     <a class="nav-link" href="../../index.php">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="../../pages/doctor/list.php">Doctors</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="../../pages/account/account.php">Account</a>
                 </li>
             </ul>
