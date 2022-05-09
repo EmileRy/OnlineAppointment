@@ -110,12 +110,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password" required>
+            <input type="password" name="password" minlength="8" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password" required>
             <span class="invalid-feedback"><?php echo $password_err; ?></span>
             <label for="floatingPassword">Password</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password" required>
+            <input type="password" name="confirm_password" minlength="8" class="form-control <?php echo (!empty($confirm_password)) ? 'is-invalid' : ''; ?>" id="floatingPassword" placeholder="Password" required>
             <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             <label for="floatingPassword">Confirm password</label>
         </div>
