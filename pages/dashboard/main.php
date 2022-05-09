@@ -20,9 +20,19 @@ $doctor_type = $doctor->getType($link);
                 <div class="card-body">
                     <h5 class="card-title">My dashboard</h5>
                     <h6 class="card-subtitle mb-2 text-muted"><?php echo("Dr. " . $doctor_user->first_name . " " . $doctor_user->name) ?></h6>
-                    <p class="card-text"><?php echo($doctor_type->name) ?></p>
+                    <p class="card-text"><?php echo($doctor->address) ?></p>
                 </div>
             </div>
+            <ul class="list-group" style="margin-bottom: 20px;">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Type
+                    <span class="badge bg-secondary rounded-pill"><?php echo($doctor_type->name) ?></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Identification number
+                    <span class="badge bg-secondary rounded-pill"><?php echo($doctor->identification_number) ?></span>
+                </li>
+            </ul>
             <?php include("../../components/quick-appointment-creator/main.php"); ?>
         </div>
         <div class="col">

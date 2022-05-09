@@ -12,8 +12,8 @@ if($doctor != null){
     exit;
 }
 
-if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["type_id"]) && isset($_POST["address"])){
-    $doctor = new Doctor($_SESSION["id"], $_POST["type_id"], $_POST["address"]);
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["type_id"]) && isset($_POST["identification_number"]) && isset($_POST["address"])){
+    $doctor = new Doctor($_SESSION["id"], $_POST["type_id"], $_POST["address"], $_POST["identification_number"]);
     $doctor->save($link);
     header("location: ./main.php");
     exit;
@@ -31,6 +31,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["type_id"]) && isset($_P
                     }
                     ?>
                 </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">What is your identification number? <span style="color: gray;">(numbers only)</span></label>
+                <input class="form-control" name="identification_number" minlength="3" placeholder="123XXXXXX" pattern="[0-9]+" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">What is your professional address?</label>

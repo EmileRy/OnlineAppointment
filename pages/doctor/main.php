@@ -23,6 +23,12 @@ $doctor_type = $doctor->getType($link);
                     <p class="card-text"><?php echo($doctor->address) ?></p>
                 </div>
             </div>
+            <ul class="list-group" style="margin-bottom: 20px;">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Identification number
+                    <span class="badge bg-secondary rounded-pill"><?php echo($doctor->identification_number) ?></span>
+                </li>
+            </ul>
             <div class="card" style="margin-bottom: 20px;">
                 <div class="card-body">
                     <h5 class="card-title">No availabilities?</h5>

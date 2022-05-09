@@ -4,13 +4,14 @@ class Doctor
 {
 
     //Variables of the object Doctor
-    public $id, $user_id, $type_id, $address;
+    public $id, $user_id, $type_id, $address, $identification_number;
 
-    public function __construct($user_id, $type_id, $address, $id = -1) {
+    public function __construct($user_id, $type_id, $address, $identification_number, $id = -1) {
         $this->id = $id;
         $this->user_id = $user_id;
         $this->type_id = $type_id;
         $this->address = $address;
+        $this->identification_number = $identification_number;
     }
 
     public function getUser($link){
@@ -30,9 +31,9 @@ class Doctor
     }
 
     private function create($link){
-        $sql = "INSERT INTO Doctors(user_id, type_id, address) VALUES(?,?,?)";
+        $sql = "INSERT INTO Doctors(user_id, type_id, address, identification_number) VALUES(?,?,?,?)";
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "sss", $this->user_id, $this->type_id, $this->address);
+            mysqli_stmt_bind_param($stmt, "ssss", $this->user_id, $this->type_id, $this->address, $this->identification_number);
             if(mysqli_stmt_execute($stmt)){
                 $this->id = mysqli_insert_id($link);
             }
@@ -46,15 +47,15 @@ class Doctor
 
     public static function getById($link, $id) {
         $result = null;
-        $sql = "SELECT user_id, type_id, address FROM Doctors WHERE id = ?";
+        $sql = "SELECT user_id, type_id, address, identification_number FROM Doctors WHERE id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "s", $id);
             if(mysqli_stmt_execute($stmt)){
                 mysqli_stmt_store_result($stmt);
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    mysqli_stmt_bind_result($stmt, $user_id, $type_id, $address);
+                    mysqli_stmt_bind_result($stmt, $user_id, $type_id, $address, $identification_number);
                     if(mysqli_stmt_fetch($stmt)){
-                        $result = new Doctor($user_id, $type_id, $address, $id);
+                        $result = new Doctor($user_id, $type_id, $address, $identification_number, $id);
                     }
                 }
             }
@@ -65,15 +66,15 @@ class Doctor
 
     public static function getByUserId($link, $user_id) {
         $result = null;
-        $sql = "SELECT id, type_id, address FROM Doctors WHERE user_id = ?";
+        $sql = "SELECT id, type_id, address, identification_number FROM Doctors WHERE user_id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "s", $user_id);
             if(mysqli_stmt_execute($stmt)){
                 mysqli_stmt_store_result($stmt);
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    mysqli_stmt_bind_result($stmt, $id, $type_id, $address);
+                    mysqli_stmt_bind_result($stmt, $id, $type_id, $address, $identification_number);
                     if(mysqli_stmt_fetch($stmt)){
-                        $result = new Doctor($user_id, $type_id, $address, $id);
+                        $result = new Doctor($user_id, $type_id, $address, $identification_number, $id);
                     }
                 }
             }
@@ -84,10 +85,10 @@ class Doctor
 
     public static function getAll($link, $type_id = -1) {
         $result = array();
-        $sql = "SELECT id, user_id, type_id, address FROM Doctors ORDER BY id";
+        $sql = "SELECT id, user_id, type_id, address, identification_number FROM Doctors ORDER BY id";
 
         if($type_id > 0){
-            $sql = "SELECT id, user_id, type_id, address FROM Doctors WHERE type_id = ? ORDER BY id";
+            $sql = "SELECT id, user_id, type_id, address, identification_number FROM Doctors WHERE type_id = ? ORDER BY id";
         }
 
         if($stmt = mysqli_prepare($link, $sql)){
@@ -97,9 +98,9 @@ class Doctor
             if(mysqli_stmt_execute($stmt)){
                 mysqli_stmt_store_result($stmt);
                 if(mysqli_stmt_num_rows($stmt) >= 1){
-                    mysqli_stmt_bind_result($stmt, $id, $user_id, $type_id, $address);
+                    mysqli_stmt_bind_result($stmt, $id, $user_id, $type_id, $address, $identification_number);
                     while(mysqli_stmt_fetch($stmt)){
-                        $result[] = new Doctor($user_id, $type_id, $address, $id);
+                        $result[] = new Doctor($user_id, $type_id, $address, $identification_number, $id);
                     }
                 }
             }
