@@ -1,5 +1,7 @@
 # OnlineAppointment
 
+![](assets/images/demo_screenshot.png)
+
 ### Members
 - Martha Higuera Pastor
 - Emile Rey
