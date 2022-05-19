@@ -30,6 +30,6 @@ Create a database (into your MySQL server) dedicated to this app. Then import on
 
 Edit the `config.php` file to use the correct SQL credentials, so the app will be able to connect to the database you created during the previous step.
 
-#### Step 4: Envoy!
+#### Step 4: Enjoy!
 
 The app should now work fine, you can navigate to your PHP server main URL to use it and create your own account. Note that it is an experimental app so there is no email verification.
