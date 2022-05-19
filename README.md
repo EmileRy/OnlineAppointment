@@ -18,7 +18,7 @@ Doctors will be able to look manage their availability and their online booked a
 * PHP server (version 8 or higher)
 * MySQL server
 
-##### Step 1: Setup files
+#### Step 1: Setup files
 
 Clone this repository into your PHP server main directory.
 
